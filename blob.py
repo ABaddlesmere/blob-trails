@@ -9,30 +9,30 @@ import random
 blobSize = 10
 
 #Enable Random Coloured Blobs
-randomColours = True
+randomColours = False
 
 #Enable Random Trail Length (Has weird results)
 randomTrailLength = False
 
 #Enable Trail Fading
-fadeTrail = False
+fadeTrail = True
 
 #Remove Trail After x Trail Pixels
-removeTrail = True
-removeTrailAfter = 5
+removeTrail = False
+removeTrailAfter = 1
 
 #Number of Blobs to create
-numBlobs = 10
+numBlobs = 1
 
 #Size of the Screen (px) - X
-wSizeX = 1000
+wSizeX = 1200
 
 #Size of the Screen (px) - Y
-wSizeY = 700
+wSizeY = 600
 
 #Colour of the Background
-bgColour = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
-#bgColour = (255,255,255)
+#bgColour = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
+bgColour = (0,0,0)
 
 #Length of the Trail (Higher number = shorter)
 #Will not be used if randomTrailLength is True
@@ -129,7 +129,8 @@ class Trail:
 
     def draw(self):
         self.reduceColour()
-        pygame.draw.rect(self.window, self.colour, self.trail)
+        if self.colour[0] < 0 or self.colour[1] < 0 or self.colour[2] < 0: pass
+        else: pygame.draw.rect(self.window, self.colour, self.trail)
 
 
 pygame.init()
